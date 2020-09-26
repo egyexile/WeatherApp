@@ -3,10 +3,12 @@ package com.example.weatherapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
         String url;
         DownloadTask task = new DownloadTask();
         String result = null;
+        InputMethodManager mgr =(InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        mgr.hideSoftInputFromWindow(editText.getWindowToken(),0);
 
         try {
             url = "https://api.openweathermap.org/data/2.5/weather?q=" +city+ "&appid=282568d2c7712acdc7b78de728d580d8";
