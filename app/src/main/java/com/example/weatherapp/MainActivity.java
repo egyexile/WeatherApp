@@ -64,12 +64,9 @@ public class MainActivity extends AppCompatActivity {
                     result+= current;
                     data = reader.read();
                 }
-
-
                 return result;
             } catch (Exception e) {
                 e.printStackTrace();
-                Toast.makeText(getApplicationContext(), "Couldnt reach weather for this city :(", Toast.LENGTH_SHORT).show();
                 return "failed";
             }
 
@@ -87,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
             TextView textView = (TextView) findViewById(R.id.textView);
 
 
-            
+
             try {
                 JSONObject jsonObject = new JSONObject(s);
                 String weatherInfo = jsonObject.getString("weather");
@@ -123,6 +120,8 @@ public class MainActivity extends AppCompatActivity {
 
             } catch (Exception e) {
                 e.printStackTrace();
+                Toast.makeText(getApplicationContext(), "Couldnt reach weather for this city :(", Toast.LENGTH_SHORT).show();
+                text= "Couldnt reach weather for this city :(";
             }
             textView.setText(text);
         }
